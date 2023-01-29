@@ -6,16 +6,13 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        SpriteView(scene: MixWatermelonScene.newScene())
+            .frame(width: screen.width, height: screen.height)
+            .ignoresSafeArea()
     }
 }
 
