@@ -7,21 +7,29 @@
 
 import SwiftUI
 import SpriteKit
+import GameplayKit
 
 let screen = UIScreen.main.bounds
-class MixWatermelonScene: SKScene {
+class MixWatermelonScene: SKScene, SKPhysicsContactDelegate {
     
     var curFruit: SKSpriteNode!
     var ground: SKSpriteNode!
     var groundFruits:[SKSpriteNode] = []
     
+    var touchLocation: CGPoint!
+    lazy var gameStateMachine: GKStateMachine = GKStateMachine(states: [FruitReadyState(scene: self),FruitFalldownState(scene: self)])
+    
     override func didMove(to view: SKView) {
+        view.showsFPS = true
+        view.showsNodeCount = true
         
+        self.physicsWorld.contactDelegate = self
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         makeUI()
         
         curFruit = generateRandomFruit()
         addChild(curFruit)
+        gameStateMachine.enter(FruitReadyState.self)
     }
     
     class func newScene() -> SKScene{
@@ -52,9 +60,9 @@ extension MixWatermelonScene {
         addChild(ground)
     }
     
-    func fruitAppear(fruit: SKSpriteNode){
-        fruit.setScale(0)
-        fruit.run(.scale(to: 0.5, duration: 0.1))
+    func fruitAppear(){
+        curFruit.setScale(0)
+        curFruit.run(.scale(to: 0.5, duration: 0.1))
     }
 }
 
@@ -62,23 +70,19 @@ extension MixWatermelonScene {
 extension MixWatermelonScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else {return}
-        let touchLocation = touch.location(in: self)
-        curFruit.run(.sequence([
-            .moveTo(x: touchLocation.x, duration: 0.1),
-            .run {
-                self.curFruit.physicsBody = SKPhysicsBody(circleOfRadius: self.curFruit.size.width/2)
-            },
-            .wait(forDuration: 0.1),
-            .run {
-                self.curFruit = generateRandomFruit()
-                self.addChild(self.curFruit)
-                self.fruitAppear(fruit: self.curFruit)
-//                self.curFruit.setScale(0)
-//                self.curFruit.run(.scale(to: 0.5, duration: 0.1))
-            }]))
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touchLocation = touch.location(in: self)
+        gameStateMachine.enter(FruitFalldownState.self)
+//        curFruit.run(.sequence([
+//            .moveTo(x: self.touchLocation.x, duration: 0.1),
+//            .run {
+//                self.curFruit.physicsBody?.isDynamic = true
+//            },
+//            .wait(forDuration: 0.5),
+//            .run {
+//                self.curFruit = generateRandomFruit()
+//                self.addChild(self.curFruit)
+//                self.fruitAppear()
+//            }]))
         
     }
     

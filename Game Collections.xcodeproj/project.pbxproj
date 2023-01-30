@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B2825B0298782BA00A6FAEF /* CollisionDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2825AF298782BA00A6FAEF /* CollisionDetect.swift */; };
+		8B2825B32987C18700A6FAEF /* FruitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2825B22987C18700A6FAEF /* FruitState.swift */; };
 		8BE0436D298659400028F593 /* Game_CollectionsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0436C298659400028F593 /* Game_CollectionsApp.swift */; };
 		8BE0436F298659400028F593 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0436E298659400028F593 /* ContentView.swift */; };
 		8BE04371298659410028F593 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BE04370298659410028F593 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B2825AF298782BA00A6FAEF /* CollisionDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionDetect.swift; sourceTree = "<group>"; };
+		8B2825B22987C18700A6FAEF /* FruitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitState.swift; sourceTree = "<group>"; };
 		8BE04369298659400028F593 /* Game Collections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game Collections.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE0436C298659400028F593 /* Game_CollectionsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game_CollectionsApp.swift; sourceTree = "<group>"; };
 		8BE0436E298659400028F593 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +44,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B2825B12987BC3500A6FAEF /* main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
 		8BE04360298659400028F593 = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +70,7 @@
 		8BE0436B298659400028F593 /* Game Collections */ = {
 			isa = PBXGroup;
 			children = (
+				8B2825B12987BC3500A6FAEF /* main */,
 				8BE0437A29865AFD0028F593 /* Mix-Watermelon */,
 				8BE0436C298659400028F593 /* Game_CollectionsApp.swift */,
 				8BE0436E298659400028F593 /* ContentView.swift */,
@@ -81,6 +93,8 @@
 			children = (
 				8BE0438129867AE40028F593 /* Sounds */,
 				8BE0437B29865B620028F593 /* MixWatermelonScene.swift */,
+				8B2825B22987C18700A6FAEF /* FruitState.swift */,
+				8B2825AF298782BA00A6FAEF /* CollisionDetect.swift */,
 				8BE0437D29866BC60028F593 /* FruitTextures.swift */,
 				8BE0437F298675850028F593 /* FruitUtils.swift */,
 			);
@@ -163,6 +177,8 @@
 				8BE0436D298659400028F593 /* Game_CollectionsApp.swift in Sources */,
 				8BE0437C29865B620028F593 /* MixWatermelonScene.swift in Sources */,
 				8BE04380298675850028F593 /* FruitUtils.swift in Sources */,
+				8B2825B0298782BA00A6FAEF /* CollisionDetect.swift in Sources */,
+				8B2825B32987C18700A6FAEF /* FruitState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
