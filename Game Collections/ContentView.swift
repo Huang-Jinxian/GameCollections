@@ -8,9 +8,11 @@
 import SwiftUI
 import SpriteKit
 
+let screen = UIScreen.main.bounds
+
 struct ContentView: View {
     var body: some View {
-        SpriteView(scene: MixWatermelonScene.newScene())
+        SpriteView(scene: MainMenuScene.newScene())
             .frame(width: screen.width, height: screen.height)
             .ignoresSafeArea()
     }

@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Game Collections
+
+  Created by 黄金先 on 2023/1/31.
+  
+*/
+"app_name_mix_watermelon" = "Mix Watermelon";
+"app_name_flappy_bird" = "Flappy Bird";
