@@ -11,6 +11,7 @@ import SpriteKit
 class MainMenuScene: SKScene {
     
     var mixWatermelonLabel: SKLabelNode!
+    var flappyBirdLable: SKLabelNode!
     
     override func didMove(to view: SKView) {
         loadUI()
@@ -35,6 +36,11 @@ extension MainMenuScene {
         mixWatermelonLabel.fontColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         mixWatermelonLabel.position = CGPoint(x: screen.width/2, y: screen.height - screen.height/5)
         addChild(mixWatermelonLabel)
+        
+        flappyBirdLable = SKLabelNode(text: NSLocalizedString("app_name_flappy_bird", comment: ""))
+        flappyBirdLable.fontColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        flappyBirdLable.position = CGPoint(x: screen.width/2, y: screen.height - (screen.height/5 )*2 )
+        addChild(flappyBirdLable)
     }
 
 }
@@ -45,8 +51,14 @@ extension MainMenuScene {
         guard let touch = touches.first else {return}
         let location = touch.location(in: self)
         for node in self.nodes(at: location) {
-            if node == mixWatermelonLabel {
+            switch node {
+            case mixWatermelonLabel:
                 self.view?.presentScene(MixWatermelonScene.newScene())
+                return
+            case flappyBirdLable:
+                self.view?.presentScene(FlappyBirdScene.newScene())
+                return
+            default:
                 return
             }
         }

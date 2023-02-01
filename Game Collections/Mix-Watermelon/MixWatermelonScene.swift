@@ -41,7 +41,7 @@ class MixWatermelonScene: SKScene, SKPhysicsContactDelegate {
     
     private func checkShowRedline() -> Bool {
         for fruit in groundFruits {
-            if (fruit.position.y + 300) > redlineHeight{
+            if (fruit.position.y + 300) > 700{
                 return true
             }
         }
