@@ -11,7 +11,7 @@ import GameplayKit
 
 class MixWatermelonScene: SKScene, SKPhysicsContactDelegate {
     
-    let redlineHeight = screen.height - 200
+    let redlineHeight = screen.height - 100
     var curFruit: SKSpriteNode!
     var ground: SKSpriteNode!
     var groundFruits:Set<SKNode> = []
@@ -27,19 +27,25 @@ class MixWatermelonScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         makeUI()
-
         fruitStateMachine.enter(FruitReadyState.self)
-        fruitStateMachine.enter(FruitRedlineDisappearState.self)
+        redlineStateMachine.enter(FruitRedlineDisappearState.self)
     }
     
     override func update(_ currentTime: TimeInterval) {
+        if checkShowRedline() {
+            redlineStateMachine.enter(FruitRedlineShowingState.self)
+        } else {
+            redlineStateMachine.enter(FruitRedlineDisappearState.self)
+        }
+    }
+    
+    private func checkShowRedline() -> Bool {
         for fruit in groundFruits {
-            if fruit.position.y > redlineHeight - 150{
-                redlineStateMachine.enter(FruitRedlineShowingState.self)
-                return
+            if (fruit.position.y + 300) > redlineHeight{
+                return true
             }
         }
-        redlineStateMachine.enter(FruitRedlineDisappearState.self)
+        return false
     }
     
     class func newScene() -> SKScene{

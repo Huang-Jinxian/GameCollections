@@ -5,7 +5,21 @@
 //  Created by 黄金先 on 2023/1/29.
 //
 
-import Foundation
+import SpriteKit
+
+class FruitNode: SKSpriteNode {
+    var kind: FruitTexture
+        
+    init(kind: FruitTexture) {
+        self.kind = kind
+        let texture = SKTexture(imageNamed: kind.name)
+        super.init(texture: texture, color: UIColor.white, size: texture.size())
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
 enum FruitTexture: String, CaseIterable {
     case cherry = "cherry"

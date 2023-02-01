@@ -27,6 +27,7 @@ func randomFruit()->FruitTexture {
 func generateRandomFruit()->SKSpriteNode {
     let curFruitTexture = randomFruit()
     let fruit = SKSpriteNode(imageNamed: curFruitTexture.name)
+    fruit.name = curFruitTexture.name
     fruit.position = CGPoint(x: screen.width/2, y: screen.height - 100)
     fruit.setScale(0.5)
     fruit.physicsBody = SKPhysicsBody(circleOfRadius: fruit.size.width/2)
@@ -39,6 +40,7 @@ func generateRandomFruit()->SKSpriteNode {
 func mixFruit(curFruitTexture : FruitTexture, position: CGPoint)->SKSpriteNode {
     let mixFruitTexture = curFruitTexture.mix
     let fruit = SKSpriteNode(imageNamed: mixFruitTexture.name)
+    fruit.name = mixFruitTexture.name
     fruit.position = position
     fruit.setScale(0.5)
     fruit.physicsBody = SKPhysicsBody(circleOfRadius: fruit.size.width/2)

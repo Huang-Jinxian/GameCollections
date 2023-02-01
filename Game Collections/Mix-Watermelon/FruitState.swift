@@ -37,7 +37,10 @@ class FruitFalldownState: FruitState {
         scene.curFruit.run(.sequence([
             .moveTo(x: scene.touchLocation.x, duration: 0.1),
             .run {
-                self.scene.curFruit.physicsBody?.isDynamic = true
+                self.scene.curFruit.physicsBody = SKPhysicsBody(circleOfRadius: self.scene.curFruit.size.width/2)
+                let kind = getFruitTextureByName(fruitname: self.scene.curFruit.name!)
+                self.scene.curFruit.physicsBody?.categoryBitMask = kind.bitmask
+                self.scene.curFruit.physicsBody?.contactTestBitMask = kind.bitmask
             },
             .wait(forDuration: 0.5),
             .run {
