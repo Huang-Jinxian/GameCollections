@@ -28,16 +28,21 @@ class FlappyBirdScene: SKScene {
         flappyBirdGameStateMachine.enter(FlappyBirdGameIdleState.self)
         flappyBirdFlyStateMachine.enter(FlappyBirdGlideState.self)
         flappyBirdFloorStateMachine.enter(FlappyBirdFloorStaticState.self)
+        
+        // for test
+//        randomPips()
     }
     
     override func update(_ currentTime: TimeInterval) {
-
+        pipes.forEach({ pip in
+            pip.position = CGPoint(x: pip.position.x - 1, y: pip.position.y)
+        })
     }
         
     
     class func newScene() -> FlappyBirdScene {
         let scene = FlappyBirdScene(fileNamed: "FlappyBirdScene")!
-        scene.scaleMode = .aspectFill
+        scene.scaleMode = .aspectFit
         return scene
     }
 }
@@ -64,12 +69,12 @@ extension FlappyBirdScene {
         let pipGap = CGFloat(arc4random_uniform(UInt32(bird.size.height))) + bird.size.height * 2.5
         
         let topPipHeight = CGFloat(arc4random_uniform(UInt32(high - pipGap)))
-        let bottomPipHeight = high - pipGap - pipGap
+        let bottomPipHeight = high - pipGap - topPipHeight
         createPips(topSize: CGSize(width: width, height: topPipHeight), bottomSize: CGSize(width: width, height: bottomPipHeight))
     }
     
     func createPips(topSize: CGSize, bottomSize: CGSize) {
-        let topPip = SKSpriteNode(imageNamed: "pip/top")
+        let topPip = SKSpriteNode(imageNamed: "pipe/top")
         topPip.size = topSize
         topPip.physicsBody = SKPhysicsBody(texture: topPip.texture!, size: topPip.texture!.size())
         topPip.physicsBody?.isDynamic = false
@@ -77,15 +82,17 @@ extension FlappyBirdScene {
         topPip.physicsBody?.contactTestBitMask = 1<<1
         topPip.position = CGPoint(x: self.size.width + topSize.width/2, y: self.size.height - topSize.height/2)
         addChild(topPip)
+        pipes.append(topPip)
         
-        let bottomPip = SKSpriteNode(imageNamed: "pip/bottom")
+        let bottomPip = SKSpriteNode(imageNamed: "pipe/bottom")
         bottomPip.size = bottomSize
         bottomPip.physicsBody = SKPhysicsBody(texture: bottomPip.texture!, size: bottomPip.texture!.size())
         bottomPip.physicsBody?.isDynamic = false
         bottomPip.physicsBody?.categoryBitMask = 1<<1
         bottomPip.physicsBody?.contactTestBitMask = 1<<1
-        bottomPip.position = CGPoint(x: self.size.width + bottomSize.width/2, y: bottomSize.height/2)
+        bottomPip.position = CGPoint(x: self.size.width + bottomSize.width/2, y: floor1.size.height + bottomSize.height/2)
         addChild(bottomPip)
+        pipes.append(bottomPip)
     }
 }
 

@@ -21,9 +21,18 @@ class FlappyBirdGameIdleState: FlappyBirdGameState {
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is FlappyBirdGameRunningState.Type
     }
+    
+    override func didEnter(from previousState: GKState?) {
+        scene.pipes.forEach({pip in
+            pip.removeFromParent()
+        })
+        scene.pipes.removeAll()
+    }
 }
 
 class FlappyBirdGameRunningState: FlappyBirdGameState {
+    var timer: Timer?
+    
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is FlappyBirdGameOverState.Type
     }
@@ -31,6 +40,12 @@ class FlappyBirdGameRunningState: FlappyBirdGameState {
     override func didEnter(from previousState: GKState?) {
         scene.flappyBirdFlyStateMachine.enter(FlappyBirdFlyState.self)
         scene.flappyBirdFloorStateMachine.enter(FlappyBirdFloorRunState.self)
+        timer = Timer(timeInterval: 2, repeats: true, block: {_ in self.scene.randomPips()})
+        timer?.fire()
+    }
+    
+    override func willExit(to nextState: GKState) {
+        timer?.invalidate()
     }
 }
 
