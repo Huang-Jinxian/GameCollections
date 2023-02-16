@@ -17,6 +17,7 @@ class FlappyBirdScene: SKScene {
     var floor2: SKSpriteNode!
     var pipes:[SKSpriteNode] = []
     
+    lazy var flappyBirdGameStateMachine = GKStateMachine(states: [FlappyBirdGameIdleState(scene: self), FlappyBirdGameRunningState(scene: self), FlappyBirdGameOverState(scene: self)])
     lazy var flappyBirdFlyStateMachine = GKStateMachine(states: [FlappyBirdGlideState(bird: self.bird),FlappyBirdFlyState(bird: self.bird)])
     lazy var flappyBirdFloorStateMachine = GKStateMachine(states: [FlappyBirdFloorStaticState(floor: floor),FlappyBirdFloorRunState(floor: floor)])
     
@@ -24,6 +25,7 @@ class FlappyBirdScene: SKScene {
         
         loadUI()
         
+        flappyBirdGameStateMachine.enter(FlappyBirdGameIdleState.self)
         flappyBirdFlyStateMachine.enter(FlappyBirdGlideState.self)
         flappyBirdFloorStateMachine.enter(FlappyBirdFloorStaticState.self)
     }

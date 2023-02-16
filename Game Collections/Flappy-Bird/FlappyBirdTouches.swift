@@ -12,8 +12,14 @@ import SpriteKit
 extension FlappyBirdScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        bird.physicsBody?.isDynamic = true
-        bird.physicsBody?.velocity = CGVector(dx: 0, dy: 700)
-        flappyBirdFlyStateMachine.enter(FlappyBirdFlyState.self)
+        guard let gameState = flappyBirdGameStateMachine.currentState else {return}
+        
+        if gameState.isKind(of: FlappyBirdGameIdleState.self) {
+            flappyBirdGameStateMachine.enter(FlappyBirdGameRunningState.self)
+        } else if gameState.isKind(of: FlappyBirdGameRunningState.self) {
+            bird.physicsBody?.isDynamic = true
+            bird.physicsBody?.velocity = CGVector(dx: 0, dy: 700)
+            flappyBirdFlyStateMachine.enter(FlappyBirdFlyState.self)
+        }
     }
 }
