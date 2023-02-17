@@ -18,7 +18,7 @@ extension FlappyBirdScene {
             flappyBirdGameStateMachine.enter(FlappyBirdGameRunningState.self)
         } else if gameState.isKind(of: FlappyBirdGameRunningState.self) {
             bird.physicsBody?.isDynamic = true
-            bird.physicsBody?.velocity = CGVector(dx: 0, dy: 700)
+            bird.physicsBody?.velocity = CGVector(dx: 0, dy: 400)
             flappyBirdFlyStateMachine.enter(FlappyBirdFlyState.self)
         }
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		29470922298AAF54009E1719 /* FlappyBirdTouches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29470921298AAF54009E1719 /* FlappyBirdTouches.swift */; };
+		8B05D57E299F6B970003F83E /* FlappyBirdCollisionDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B05D57D299F6B970003F83E /* FlappyBirdCollisionDetect.swift */; };
 		8B2825B0298782BA00A6FAEF /* CollisionDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2825AF298782BA00A6FAEF /* CollisionDetect.swift */; };
 		8B2825B32987C18700A6FAEF /* FruitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2825B22987C18700A6FAEF /* FruitState.swift */; };
 		8B3EB8DD298A642C0072257E /* FlappyBirdAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B3EB8DC298A642C0072257E /* FlappyBirdAssets.xcassets */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		29470921298AAF54009E1719 /* FlappyBirdTouches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyBirdTouches.swift; sourceTree = "<group>"; };
+		8B05D57D299F6B970003F83E /* FlappyBirdCollisionDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyBirdCollisionDetect.swift; sourceTree = "<group>"; };
 		8B2825AF298782BA00A6FAEF /* CollisionDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionDetect.swift; sourceTree = "<group>"; };
 		8B2825B22987C18700A6FAEF /* FruitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitState.swift; sourceTree = "<group>"; };
 		8B3EB8DC298A642C0072257E /* FlappyBirdAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FlappyBirdAssets.xcassets; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			children = (
 				8B3EB8E0298A66BA0072257E /* FlappyBirdScene.sks */,
 				8B3EB8DE298A66840072257E /* FlappyBirdScene.swift */,
+				8B05D57D299F6B970003F83E /* FlappyBirdCollisionDetect.swift */,
 				29470921298AAF54009E1719 /* FlappyBirdTouches.swift */,
 				8BF9C8B9298BBAB100F79EEA /* FlappyBirdGameState.swift */,
 				8B3EB8E2298A70080072257E /* FlappyBirdState.swift */,
@@ -228,6 +231,7 @@
 				8B472A6329890FE700DC3D1D /* FruitRedlineState.swift in Sources */,
 				8B472A5B2988D87600DC3D1D /* MainMenuScene.swift in Sources */,
 				8BF9C8B8298B73C800F79EEA /* FlappyBirdFloorState.swift in Sources */,
+				8B05D57E299F6B970003F83E /* FlappyBirdCollisionDetect.swift in Sources */,
 				8B2825B32987C18700A6FAEF /* FruitState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
